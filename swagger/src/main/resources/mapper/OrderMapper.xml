@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swagger.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.swagger.entity.Order">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="petId" jdbcType="INTEGER" property="petId" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="shipDate" jdbcType="DATE" property="shipDate" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="complete" jdbcType="VARCHAR" property="complete" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.swagger.entity.Order" useGeneratedKeys="true">
+    insert into order (petId, quantity, shipDate, 
+      status, complete)
+    values (#{petId,jdbcType=INTEGER}, #{quantity,jdbcType=INTEGER}, #{shipDate,jdbcType=DATE}, 
+      #{status,jdbcType=VARCHAR}, #{complete,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.swagger.entity.Order">
+    update order
+    set petId = #{petId,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=INTEGER},
+      shipDate = #{shipDate,jdbcType=DATE},
+      status = #{status,jdbcType=VARCHAR},
+      complete = #{complete,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, petId, quantity, shipDate, status, complete
+    from order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, petId, quantity, shipDate, status, complete
+    from order
+  </select>
+</mapper>
