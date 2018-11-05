@@ -1,0 +1,18 @@
+table{
+    border: 2px solid black;
+    border-collapse: collapse;
+    width: 60%;
+
+}
+table tr td{
+    border: 2px solid black;
+    text-align: center;
+}
+
+body{
+    text-align: center;
+}
+
+div{
+    margin-left: 28%;
+}

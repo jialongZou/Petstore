@@ -15,4 +15,15 @@ public interface PetMapper {
     int updateByPrimaryKey(Pet record);
 
     List<Pet> selectPet();
+
+    List<Pet> selectAllShop();
+
+    List<Pet> selectAllDepot();
+
+    int updatePetToShop(int p_id);
+
+    Pet selectPetById(int p_id);
+
+
+
 }

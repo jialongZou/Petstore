@@ -21,14 +21,10 @@
 </resultMap>
 
   <select id="selectPet" resultMap="BaseResultMap" >
-    select p.p_id , c.c_name , p.p_name , t.t_name , p.p_status
+    select p.p_id ,p.p_name , c.c_name , t.t_name , p.p_status
     from Pet p,category c,tag t
     where p.p_categoryId = c.c_id and p.p_tagId = t.t_id;
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from pet
-    where p_id = #{p_id,jdbcType=INTEGER}
-  </delete>
   <insert id="insert" parameterType="com.swagger.entity.Pet">
     insert into pet (p_id, p_categoryId, p_name, 
       p_photoUrls, p_tagId, p_status
@@ -55,4 +51,31 @@
     select p_id, p_categoryId, p_name, p_photoUrls, p_tagId, p_status
     from pet
   </select>
+  <select id="selectAllShop" resultMap="BaseResultMap">
+    select p.p_id , p.p_name , c.c_name , t.t_name , p.p_status
+    from Pet p,category c,tag t
+    where p.p_categoryId = c.c_id and p.p_tagId = t.t_id
+    and (p.p_status='预订' or  p.p_status='出售');
+  </select>
+  <select id="selectAllDepot" resultMap="BaseResultMap">
+    select p.p_id ,p.p_name , c.c_name , t.t_name , p.p_status
+    from Pet p,category c,tag t
+    where p.p_categoryId = c.c_id
+    and p.p_tagId = t.t_id and (p.p_status='库存');
+  </select>
+  <update id="updatePetToShop" parameterType="com.swagger.entity.Pet">
+    update Pet
+    set p_status='出售'
+    where p_id=#{p_id,jdbcType=INTEGER}
+  </update>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pet
+    where p_id = #{p_id,jdbcType=INTEGER}
+  </delete>
+  <select id="selectPetById" parameterType="com.swagger.entity.Pet">
+    select p.p_id ,p.p_name , c.c_name , t.t_name , p.p_status
+    from Pet p,category c,tag t
+    where p.p_categoryId = c.c_id and p.p_tagId = t.t_id and (p_id = #{p_id,jdbcType=INTEGER})
+  </select>
+
 </mapper>

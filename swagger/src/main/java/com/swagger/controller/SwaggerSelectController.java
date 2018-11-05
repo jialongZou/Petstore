@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+
 public class SwaggerSelectController {
 
     @Autowired
@@ -25,7 +25,10 @@ public class SwaggerSelectController {
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(Model model) {
         List<Pet> Pets = petMapper.selectPet();
+        List<Pet> Pets2= petMapper.selectAllDepot();
+
         model.addAttribute("Pets", Pets);
+        model.addAttribute("Pets2",Pets2);
         return "index";
     }
 
@@ -36,26 +39,15 @@ public class SwaggerSelectController {
         return "user";
     }
 
-
-    /*@RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json")
-    @ResponseBody
-    public String add(@RequestBody List<Worker> list) {
-        int c = workerMapper.add(list);
-        if (c > 0)
-            return "{\"msg\":\"ok\"}";
-        return "{\"msg\":\"no\"}";
+    @RequestMapping(value = "/shop", method = RequestMethod.GET)
+    public String shopAllPet(Model model) {
+        List<Pet> Pets_2 = petMapper.selectAllShop();
+        model.addAttribute("Pets_2", Pets_2);
+        return "shopAllPet";
     }
 
-    @RequestMapping(value = "/del/{id}", method = RequestMethod.GET)
-    public String del(@PathVariable("id") int id) {
-        workerMapper.deleteByPrimaryKey(id);
-        return "redirect:/w/index";
-    }
-
-    @RequestMapping(value = "/delNull")
-    public String delNull() {
-        workerMapper.deleteByIdIsNull();
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String selectPetById(Model model){
         return "";
-    }*/
-
+    }
 }
