@@ -1,23 +1,23 @@
 package com.swagger.entity;
 
 public class Tag {
-    private Integer id;
+    private Integer t_id;
 
-    private String name;
+    private String t_name;
 
-    public Integer getId() {
-        return id;
+    public Integer getT_id() {
+        return t_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setT_id(Integer t_id) {
+        this.t_id = t_id;
     }
 
-    public String getName() {
-        return name;
+    public String getT_name() {
+        return t_name;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setT_name(String t_name) {
+        this.t_name = t_name == null ? null : t_name.trim();
     }
 }

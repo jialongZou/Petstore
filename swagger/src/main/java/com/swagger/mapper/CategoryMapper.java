@@ -4,11 +4,11 @@ import com.swagger.entity.Category;
 import java.util.List;
 
 public interface CategoryMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer c_id);
 
     int insert(Category record);
 
-    Category selectByPrimaryKey(Integer id);
+    Category selectByPrimaryKey(Integer c_id);
 
     List<Category> selectAll();
 

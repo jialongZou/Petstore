@@ -1,63 +1,83 @@
 package com.swagger.entity;
 
 public class Pet {
-    private Integer id;
+    private Integer p_id;
 
-    private Integer categoryId;
+    private Integer p_categoryId;
 
-    private String name;
+    private String p_name;
 
-    private String photoUrls;
+    private String p_photoUrls;
 
-    private Integer tagId;
+    private Integer p_tagId;
 
-    private String status;
+    private String p_status;
 
-    public Integer getId() {
-        return id;
+    private Category category;
+
+    private Tag tag;
+
+    public Category getCategory() {
+        return category;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public Tag getTag() {
+        return tag;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setTag(Tag tag) {
+        this.tag = tag;
     }
 
-    public String getName() {
-        return name;
+    public Integer getP_id() {
+        return p_id;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setP_id(Integer p_id) {
+        this.p_id = p_id;
     }
 
-    public String getPhotoUrls() {
-        return photoUrls;
+    public Integer getP_categoryId() {
+        return p_categoryId;
     }
 
-    public void setPhotoUrls(String photoUrls) {
-        this.photoUrls = photoUrls == null ? null : photoUrls.trim();
+    public void setP_categoryId(Integer p_categoryId) {
+        this.p_categoryId = p_categoryId;
     }
 
-    public Integer getTagId() {
-        return tagId;
+    public String getP_name() {
+        return p_name;
     }
 
-    public void setTagId(Integer tagId) {
-        this.tagId = tagId;
+    public void setP_name(String p_name) {
+        this.p_name = p_name == null ? null : p_name.trim();
     }
 
-    public String getStatus() {
-        return status;
+    public String getP_photoUrls() {
+        return p_photoUrls;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setP_photoUrls(String p_photoUrls) {
+        this.p_photoUrls = p_photoUrls == null ? null : p_photoUrls.trim();
+    }
+
+    public Integer getP_tagId() {
+        return p_tagId;
+    }
+
+    public void setP_tagId(Integer p_tagId) {
+        this.p_tagId = p_tagId;
+    }
+
+    public String getP_status() {
+        return p_status;
+    }
+
+    public void setP_status(String p_status) {
+        this.p_status = p_status == null ? null : p_status.trim();
     }
 }

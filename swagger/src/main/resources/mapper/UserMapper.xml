@@ -2,45 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.swagger.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="com.swagger.entity.User">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="firstName" jdbcType="VARCHAR" property="firstName" />
-    <result column="lastName" jdbcType="VARCHAR" property="lastName" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="status" jdbcType="INTEGER" property="status" />
+    <id column="u_id" jdbcType="INTEGER" property="u_id" />
+    <result column="u_username" jdbcType="VARCHAR" property="u_username" />
+    <result column="u_password" jdbcType="VARCHAR" property="u_password" />
+    <result column="u_firstName" jdbcType="VARCHAR" property="u_firstName" />
+    <result column="u_lastName" jdbcType="VARCHAR" property="u_lastName" />
+    <result column="u_email" jdbcType="VARCHAR" property="u_email" />
+    <result column="u_phone" jdbcType="VARCHAR" property="u_phone" />
+    <result column="u_status" jdbcType="INTEGER" property="u_status" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
-    where id = #{id,jdbcType=INTEGER}
+    where u_id = #{u_id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.swagger.entity.User" useGeneratedKeys="true">
-    insert into user (username, password, firstName, 
-      lastName, email, phone, 
-      status)
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, 
-      #{lastName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.swagger.entity.User">
+    insert into user (u_id, u_username, u_password, 
+      u_firstName, u_lastName, u_email, 
+      u_phone, u_status)
+    values (#{u_id,jdbcType=INTEGER}, #{u_username,jdbcType=VARCHAR}, #{u_password,jdbcType=VARCHAR}, 
+      #{u_firstName,jdbcType=VARCHAR}, #{u_lastName,jdbcType=VARCHAR}, #{u_email,jdbcType=VARCHAR}, 
+      #{u_phone,jdbcType=VARCHAR}, #{u_status,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.swagger.entity.User">
     update user
-    set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      firstName = #{firstName,jdbcType=VARCHAR},
-      lastName = #{lastName,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    set u_username = #{u_username,jdbcType=VARCHAR},
+      u_password = #{u_password,jdbcType=VARCHAR},
+      u_firstName = #{u_firstName,jdbcType=VARCHAR},
+      u_lastName = #{u_lastName,jdbcType=VARCHAR},
+      u_email = #{u_email,jdbcType=VARCHAR},
+      u_phone = #{u_phone,jdbcType=VARCHAR},
+      u_status = #{u_status,jdbcType=INTEGER}
+    where u_id = #{u_id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, username, password, firstName, lastName, email, phone, status
+    select u_id, u_username, u_password, u_firstName, u_lastName, u_email, u_phone, u_status
     from user
-    where id = #{id,jdbcType=INTEGER}
+    where u_id = #{u_id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, username, password, firstName, lastName, email, phone, status
+    select u_id, u_username, u_password, u_firstName, u_lastName, u_email, u_phone, u_status
     from user
   </select>
 </mapper>

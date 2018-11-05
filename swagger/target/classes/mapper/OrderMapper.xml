@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swagger.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.swagger.entity.Order">
+    <id column="o_id" jdbcType="INTEGER" property="o_id" />
+    <result column="o_petId" jdbcType="INTEGER" property="o_petId" />
+    <result column="o_quantity" jdbcType="INTEGER" property="o_quantity" />
+    <result column="o_shipDate" jdbcType="DATE" property="o_shipDate" />
+    <result column="o_status" jdbcType="VARCHAR" property="o_status" />
+    <result column="o_complete" jdbcType="VARCHAR" property="o_complete" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order
+    where o_id = #{o_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.swagger.entity.Order">
+    insert into order (o_id, o_petId, o_quantity, 
+      o_shipDate, o_status, o_complete
+      )
+    values (#{o_id,jdbcType=INTEGER}, #{o_petId,jdbcType=INTEGER}, #{o_quantity,jdbcType=INTEGER}, 
+      #{o_shipDate,jdbcType=DATE}, #{o_status,jdbcType=VARCHAR}, #{o_complete,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.swagger.entity.Order">
+    update order
+    set o_petId = #{o_petId,jdbcType=INTEGER},
+      o_quantity = #{o_quantity,jdbcType=INTEGER},
+      o_shipDate = #{o_shipDate,jdbcType=DATE},
+      o_status = #{o_status,jdbcType=VARCHAR},
+      o_complete = #{o_complete,jdbcType=VARCHAR}
+    where o_id = #{o_id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select o_id, o_petId, o_quantity, o_shipDate, o_status, o_complete
+    from order
+    where o_id = #{o_id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select o_id, o_petId, o_quantity, o_shipDate, o_status, o_complete
+    from order
+  </select>
+</mapper>

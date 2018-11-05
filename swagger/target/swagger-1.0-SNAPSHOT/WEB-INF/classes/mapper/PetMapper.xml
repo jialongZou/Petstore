@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swagger.mapper.PetMapper">
+  <resultMap id="BaseResultMap" type="com.swagger.entity.Pet">
+    <id column="p_id" jdbcType="INTEGER" property="p_id" />
+    <result column="p_categoryId" jdbcType="INTEGER" property="p_categoryId" />
+    <result column="p_name" jdbcType="VARCHAR" property="p_name" />
+    <result column="p_photoUrls" jdbcType="VARCHAR" property="p_photoUrls" />
+    <result column="p_tagId" jdbcType="INTEGER" property="p_tagId" />
+    <result column="p_status" jdbcType="VARCHAR" property="p_status" />
+  <!--column 是数据库中字段， property是实体类中字段-->
+  <association property="category" javaType="Category">
+    <id column="c_id" jdbcType="INTEGER" property="c_id" />
+    <result column="c_name" jdbcType="VARCHAR" property="c_name" />
+  </association>
+
+  <association property="tag" javaType="Tag">
+    <id column="t_id" jdbcType="INTEGER" property="t_id" />
+    <result column="t_name" jdbcType="VARCHAR" property="t_name" />
+  </association>
+</resultMap>
+
+  <select id="selectPet" resultMap="BaseResultMap" >
+    select p.p_id , c.c_name , p.p_name , t.t_name , p.p_status
+    from Pet p,category c,tag t
+    where p.p_categoryId = c.c_id and p.p_tagId = t.t_id;
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pet
+    where p_id = #{p_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.swagger.entity.Pet">
+    insert into pet (p_id, p_categoryId, p_name, 
+      p_photoUrls, p_tagId, p_status
+      )
+    values (#{p_id,jdbcType=INTEGER}, #{p_categoryId,jdbcType=INTEGER}, #{p_name,jdbcType=VARCHAR}, 
+      #{p_photoUrls,jdbcType=VARCHAR}, #{p_tagId,jdbcType=INTEGER}, #{p_status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.swagger.entity.Pet">
+    update pet
+    set p_categoryId = #{p_categoryId,jdbcType=INTEGER},
+      p_name = #{p_name,jdbcType=VARCHAR},
+      p_photoUrls = #{p_photoUrls,jdbcType=VARCHAR},
+      p_tagId = #{p_tagId,jdbcType=INTEGER},
+      p_status = #{p_status,jdbcType=VARCHAR}
+    where p_id = #{p_id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select p_id, p_categoryId, p_name, p_photoUrls, p_tagId, p_status
+    from pet
+    where p_id = #{p_id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select p_id, p_categoryId, p_name, p_photoUrls, p_tagId, p_status
+    from pet
+  </select>
+</mapper>

@@ -1,83 +1,83 @@
 package com.swagger.entity;
 
 public class User {
-    private Integer id;
+    private Integer u_id;
 
-    private String username;
+    private String u_username;
 
-    private String password;
+    private String u_password;
 
-    private String firstName;
+    private String u_firstName;
 
-    private String lastName;
+    private String u_lastName;
 
-    private String email;
+    private String u_email;
 
-    private String phone;
+    private String u_phone;
 
-    private Integer status;
+    private Integer u_status;
 
-    public Integer getId() {
-        return id;
+    public Integer getU_id() {
+        return u_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setU_id(Integer u_id) {
+        this.u_id = u_id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getU_username() {
+        return u_username;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setU_username(String u_username) {
+        this.u_username = u_username == null ? null : u_username.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public String getU_password() {
+        return u_password;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setU_password(String u_password) {
+        this.u_password = u_password == null ? null : u_password.trim();
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getU_firstName() {
+        return u_firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName == null ? null : firstName.trim();
+    public void setU_firstName(String u_firstName) {
+        this.u_firstName = u_firstName == null ? null : u_firstName.trim();
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getU_lastName() {
+        return u_lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName == null ? null : lastName.trim();
+    public void setU_lastName(String u_lastName) {
+        this.u_lastName = u_lastName == null ? null : u_lastName.trim();
     }
 
-    public String getEmail() {
-        return email;
+    public String getU_email() {
+        return u_email;
     }
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+    public void setU_email(String u_email) {
+        this.u_email = u_email == null ? null : u_email.trim();
     }
 
-    public String getPhone() {
-        return phone;
+    public String getU_phone() {
+        return u_phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+    public void setU_phone(String u_phone) {
+        this.u_phone = u_phone == null ? null : u_phone.trim();
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getU_status() {
+        return u_status;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setU_status(Integer u_status) {
+        this.u_status = u_status;
     }
 }

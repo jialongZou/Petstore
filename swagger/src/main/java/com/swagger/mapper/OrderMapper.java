@@ -4,11 +4,11 @@ import com.swagger.entity.Order;
 import java.util.List;
 
 public interface OrderMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer o_id);
 
     int insert(Order record);
 
-    Order selectByPrimaryKey(Integer id);
+    Order selectByPrimaryKey(Integer o_id);
 
     List<Order> selectAll();
 
